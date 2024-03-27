@@ -79,8 +79,8 @@ def fw_sessions(project_path='luna/wpc-8620-habit'):
         ses_data = redcap_df[(redcap_df.redcap_id == subj) &
                              (redcap_df.mri_session_id == sesid)].reset_index()
 
-        if ses_data.shape[0] == 1:
-            warnings.warn(f"{ses} data not in redcap!")
+        if ses_data.shape[0] != 1:
+            warnings.warn(f"{ses} data has {ses_data.shape[0]} MR matches in redcap!")
             continue
 
         age = ses_data.age_at_scan[0]
@@ -100,8 +100,8 @@ def fw_sessions(project_path='luna/wpc-8620-habit'):
                              (redcap_df.redcap_event_name == beh_event)].\
             reset_index()
 
-        if beh_data.shape[0] == 1:
-            warnings.warn(f"{ses} data not in redcap!")
+        if beh_data.shape[0] != 1:
+            warnings.warn(f"{ses} data has {beh_data.shape[0]} beh matches in redcap!")
             continue
 
         upps_info = beh_data.upps_reservedattitude[0]
