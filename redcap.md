@@ -2,6 +2,14 @@
 
 [`fwredcap.py`](fwredcap.py) matches flywheel session code to redcap data. Here we want to pull 2 separate values (`age_at_scan` and a previously recorded UPPS instrument value `upps_reservedattitude`) from redcap into flywheel. 
 
+```
+export REDCAP_KEY=xxxxxxxxx
+proxychains python3 ./fwredcap.py
+# [{'age': 13.0, 'upps': 1.0, 'code': '12001_20240314'}]
+```
+
+**TODO:  Add matching data back to flywheel**
+
 ## Overview
 After pulling data from flywheel and redcap, matching them requires
   1. separating the flywheel session code into id and date parts (NB. date unlikely to be in other IDs, see `sessions()[0].acqusistions()[0][timestamp`)
