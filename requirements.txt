@@ -1,0 +1,2 @@
+flywheel-sdk>=18.1.0
+pycap[all]>=2.6.0

@@ -59,13 +59,14 @@ def fw_sessions(project_path='luna/wpc-8620-habit'):
 
     TODO:
      * check what flywheel already has?
-     *
+     * should iterate over sessions. get date from first acqusitions?
     """
     fw_key = get_key("FLYWHEEL_KEY", "flywheel-apikey",
                      os.path.expanduser("~/.config/flywheel/user.json"))
     fw = flywheel.Client(fw_key)
     proj = fw.resolve(project_path)
     sess_ids = [x.code for x in proj.children]
+    # date = proj.children[0].sessions()[0].acquisitions()[0].timestamp.strftime("%Y%m%d")
 
     # nested index hard to match against
     redcap_df = redcap_records().reset_index()
